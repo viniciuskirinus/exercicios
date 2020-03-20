@@ -1,0 +1,87 @@
+<?php
+
+class Empregado{
+	
+	public $primeiroNome;
+	public $sobrenome;
+	public $salarioMensal;
+	public $salarioAnual;
+
+
+	public function __construct(){
+		$this -> primeiroNome = "Vinícius";
+		$this -> sobrenome = "Kirinus";
+		$this -> salarioMensal = 1045.00;
+	}
+
+	public function setPrimeiroNome($pm){
+		$this -> primeiroNome = $pm;
+	}
+
+	public function getPrimeiroNome(){
+		return $this -> primeiroNome;
+	}
+
+	public function setSobrenome($s){
+		$this -> sobrenome = $s;
+	}
+
+	public function getSobrenome(){
+		return $this -> sobrenome;
+	}
+
+	public function setSalarioMensal($sm){
+		$this -> salarioMensal = $sm;
+	}
+
+	public function getSalarioMensal(){
+		return $this -> salarioMensal;
+	}
+
+	public function setSalarioAnual(){
+		return $this -> salarioAnual = $this -> salarioMensal * 12;
+	}
+
+	public function getSalarioAnual(){
+		return $this -> salarioAnual;
+	}
+
+	public function validaSalarioMensal () {
+	    if ($this-> salarioMensal < 0) {
+	      $this-> salarioMensal = 0.0;
+	    }
+    }
+
+    public function aumentaSalarioMensal () {
+    $porcentagem = ($this-> salarioMensal * 10) / 100;
+    $this-> salarioMensal = $this-> salarioMensal + $porcentagem;
+  }
+
+
+
+}
+
+// empregado 1
+$emp1 = new Empregado();
+$emp1-> validaSalarioMensal ();
+$emp1-> setSalarioAnual ();
+echo "<pre>";
+echo "O salário anual de {$emp1-> getPrimeiroNome ()} {$emp1-> getSobrenome ()} é de R$ {$emp1-> getSalarioAnual ()} <br>"; 
+$emp1 -> aumentaSalarioMensal ();
+$emp1-> setSalarioAnual ();
+echo "Com o reajuste de 10% agora ele é de R$ {$emp1-> getSalarioAnual ()}";
+echo "</pre>";
+
+$emp2 = new Empregado();
+$emp2 -> setPrimeiroNome ("Clecir");
+$emp2 -> setSobrenome ("da Roza");
+$emp2-> setSalarioMensal (2500);
+$emp2-> validaSalarioMensal();
+$emp2-> setSalarioAnual();
+echo "<pre>";
+echo "O salário anual de {$emp2-> getPrimeiroNome ()} {$emp2-> getSobrenome ()} é de R$ {$emp2-> getSalarioAnual ()} <br>"; 
+$emp2 -> aumentaSalarioMensal ();
+$emp2-> setSalarioAnual ();
+echo "Com o reajuste de 10% agora ele é de R$ {$emp2-> getSalarioAnual ()} <br>";
+echo "</pre>";
+?>
