@@ -1,0 +1,47 @@
+<?php
+
+class Produto{
+
+	public $nome;
+	public $preco;
+	public $quantidade;
+	public $desconto;
+	public $pagamento;
+
+		public function Produto($nome, $preco, $quantidade){
+			$this -> nome = $nome;
+			$this -> preco = $preco;
+			$this -> quantidade = $quantidade;
+
+			$this -> pagamento = $this -> preco * $this -> quantidade;
+				if($this -> quantidade >= 11 && $this -> quantidade <= 20){
+					$this -> desconto = "10%";
+
+					$desc = ($this -> pagamento * 10) / 100;
+					$this -> pagamento = $this -> pagamento - $desc;
+
+				}elseif ($this -> quantidade >= 21 && $this -> quantidade <= 50) {
+					$this -> desconto = "20%";
+
+					$desc = ($this -> pagamento * 20) / 100;
+					$this -> pagamento = $this -> pagamento - $desc;
+
+				}elseif ($this -> quantidade > 50) {
+					$this -> desconto = "25%";
+
+					$desc = ($this -> pagamento * 25) / 100;
+					$this -> pagamento = $this -> pagamento - $desc;
+				}else{
+				$this -> desconto = 0;
+			}
+		}
+}
+
+echo "<pre>";
+$produto1 = new Produto ("Ovos", 1, 50, 32);
+	print_r($produto1);
+
+$produto2 = new Produto ("Farinha", 4, 13, 92);
+	print_r($produto2);
+echo "</pre>";
+?>
